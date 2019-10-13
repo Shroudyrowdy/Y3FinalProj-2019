@@ -1,0 +1,35 @@
+<!-- Form for reporting that you have found an item -->
+{% extends "loggedin.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Report
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='report.css')}}">
+{% endblock %}
+
+{% block content %}
+
+    <div w3-include-html="navigation.html"></div>
+    <script src = B:\Users\Joel\Desktop\Timstuff\CEP\CEP_codes\Y3-FinalProj-master\includes\navigate.js>
+      includeHTML();
+    </script>
+
+
+    <div class="container">
+      <form class="form-signin" method="POST" action="/report">
+        <h2 class="form-signin-heading">Please fill in the details of the item you found</h2>
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.name) }}
+        {{ wtf.form_field(form.description) }}
+        {{ wtf.form_field(form.tag) }}
+        {{ wtf.form_field(form.location_found) }}
+        {{ wtf.form_field(form.date_found) }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Report item found</button>
+      </form>
+
+    </div> <!-- /container -->
+{% endblock %}
